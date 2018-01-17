@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:P="http://www.springframework.org/schema/c" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://mybatis.org/schema/mybatis-spring
+        http://mybatis.org/schema/mybatis-spring.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--扫描mapper包里的所有接口，将接口当做mapper配置，之后就可以自动引入mapper类-->
+    <mybatis:scan base-package="wyj.mapper"/>
+
+    <!--扫描fkit包里的java文件，和Spring的相关注解的类，把这些类注册为Spring的bean，属性注入有关-->
+    <context:component-scan base-package="wyj"/>
+
+    <!--使用propertyOverrideConfigurer后处理器加载数据源参数，用于连数据库-->
+    <context:property-override location="classpath:db.properties"/>
+
+    <!--配置出c3p0数据源-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"/>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
+          p:dataSource-ref="dataSource"/>
+
+    <!--JDBC事务管理器-->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+          p:dataSource-ref="dataSource"/>
+
+    <!--启用支持annotation注解方式事务管理-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+
+</beans>

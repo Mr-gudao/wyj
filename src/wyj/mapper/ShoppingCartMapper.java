@@ -1,9 +1,6 @@
 package wyj.mapper;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import wyj.domain.Goods;
 import wyj.domain.Shopping_cart;
 
@@ -20,10 +17,9 @@ public interface ShoppingCartMapper {
     int inertIntoShoppingCart(Shopping_cart shopping_cart);
 
 
-    //退出购物车时插入最终数据到购物车表
-    @Insert("update  shopping_cart set(shopping_cart_goods_counts,shopping_cart_totalPrice)" +
-            "=(#{shopping_cart_goods_counts},#{shopping_cart_totalPrice} where shopping_cart_goods_code=#{shopping_cart_goods_code} and shopping_cart_username=#{shopping_cart_username})")
-    int inertIntoShoppingCartFinal(Shopping_cart shopping_cart);
+    //退出购物车时更新最终数据到购物车表
+    @Update("update shopping_cart set shopping_cart_goods_counts=#{shopping_cart_goods_counts} ,shopping_cart_totalPrice=#{shopping_cart_totalPrice} where shopping_cart_goods_code=#{shopping_cart_goods_code} and shopping_cart_username=#{shopping_cart_username}")
+    int updateShoppingCartFinal(Shopping_cart shopping_cart);
 
     //从购物车中查询添加的数据
     @Select("select *from shopping_cart where shopping_cart_username=#{shopping_cart_username} ")

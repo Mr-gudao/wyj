@@ -84,6 +84,8 @@ public class Basic_userController {
         }
         return result;
     }
+
+
     //未验证用户插入到临时数据库（true表示插入成功，false表示失败）
     @RequestMapping("/insertInactiveUserInfo")
     @ResponseBody
@@ -114,6 +116,8 @@ public class Basic_userController {
         timer.schedule(timerTask,180000);
         return result;
     }
+
+
     //查找验证码
     @RequestMapping("/selectCodeByEmail")
     @ResponseBody
@@ -138,6 +142,8 @@ public class Basic_userController {
         }
         return result;
     }
+
+
 
     //注册成功，插入数据到用户数据库
     @RequestMapping("insertUserInfo")

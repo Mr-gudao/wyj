@@ -24,11 +24,21 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
         return shoppingCartMapper.inertIntoShoppingCart(shopping_cart);
     }
 
-    //插入数据到购物车
     @Override
-    public int insertIntoShoppingCartFinal(Shopping_cart shopping_cart) {
-        return  shoppingCartMapper.inertIntoShoppingCartFinal(shopping_cart);
+    public Shopping_cart selectGoodsByCodeAndUSername(Shopping_cart shopping_cart) {
+        return shoppingCartMapper.selectGoodsByCodeAndUsername(shopping_cart);
     }
+
+    @Override
+    public int updateShoppingGoodsCounts( Shopping_cart shopping_cart) {
+        return shoppingCartMapper.updateShoppingGoodsCounts(shopping_cart);
+    }
+
+    //插入数据到购物车
+//    @Override
+//    public int updateShoppingCartFinal(Shopping_cart shopping_cart) {
+//        return  shoppingCartMapper.updateShoppingCartFinal(shopping_cart);
+//    }
 
     //根据用户名查询购物车数据
     @Override
@@ -39,5 +49,10 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
     @Override
     public int deleteGoodsFromCart(Shopping_cart shopping_cart) {
         return shoppingCartMapper.deleteGoodsFromCart(shopping_cart);
+    }
+
+    @Override
+    public int deleteAllGoods(Shopping_cart shopping_cart) {
+        return shoppingCartMapper.deleteAllGoods(shopping_cart);
     }
 }

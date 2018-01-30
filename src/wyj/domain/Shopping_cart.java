@@ -16,11 +16,18 @@ public class Shopping_cart {
     private double shopping_cart_singleGoodsTotalPrice; //购物车单个商品总价格
     private double shopping_cart_totalPrice;    //购物车商品总价格
     private int shopping_cart_goods_stock;  //购物车商品库存
+    private String shopping_cart_goods_image; //购物车商品图片
 
     public Shopping_cart() {
     }
 
-    public Shopping_cart(String shopping_cart_username, int shopping_cart_goods_code,  int shopping_cart_goods_counts, double shopping_cart_totalPrice) {
+    public Shopping_cart(String shopping_cart_username, int shopping_cart_goods_code, int shopping_cart_goods_counts) {
+        this.shopping_cart_username = shopping_cart_username;
+        this.shopping_cart_goods_code = shopping_cart_goods_code;
+        this.shopping_cart_goods_counts = shopping_cart_goods_counts;
+    }
+
+    public Shopping_cart(String shopping_cart_username, int shopping_cart_goods_code, int shopping_cart_goods_counts, double shopping_cart_totalPrice) {
 
         this.shopping_cart_username = shopping_cart_username;
         this.shopping_cart_goods_code = shopping_cart_goods_code;
@@ -29,7 +36,7 @@ public class Shopping_cart {
 
     }
 
-    public Shopping_cart(String shopping_cart_username, int shopping_cart_goods_code, String shopping_cart_goods_name, double shopping_cart_goods_currentPrice, String shopping_cart_goods_specifications, int shopping_cart_goods_counts, int shopping_cart_goods_stock) {
+    public Shopping_cart(String shopping_cart_username, int shopping_cart_goods_code, String shopping_cart_goods_name, double shopping_cart_goods_currentPrice, String shopping_cart_goods_specifications, int shopping_cart_goods_counts, int shopping_cart_goods_stock,String shopping_cart_goods_image) {
         this.shopping_cart_username = shopping_cart_username;
         this.shopping_cart_goods_code = shopping_cart_goods_code;
         this.shopping_cart_goods_name = shopping_cart_goods_name;
@@ -37,6 +44,7 @@ public class Shopping_cart {
         this.shopping_cart_goods_specifications = shopping_cart_goods_specifications;
         this.shopping_cart_goods_counts = shopping_cart_goods_counts;
         this.shopping_cart_goods_stock = shopping_cart_goods_stock;
+        this.shopping_cart_goods_image=shopping_cart_goods_image;
     }
 
     public int getShopping_cart_id() {
@@ -117,6 +125,14 @@ public class Shopping_cart {
 
     public void setShopping_cart_goods_stock(int shopping_cart_goods_stock) {
         this.shopping_cart_goods_stock = shopping_cart_goods_stock;
+    }
+
+    public String getShopping_cart_goods_image() {
+        return shopping_cart_goods_image;
+    }
+
+    public void setShopping_cart_goods_image(String shopping_cart_goods_image) {
+        this.shopping_cart_goods_image = shopping_cart_goods_image;
     }
 
     @Override

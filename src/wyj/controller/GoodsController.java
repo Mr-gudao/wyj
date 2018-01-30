@@ -57,10 +57,8 @@ public class GoodsController {
     @RequestMapping("/selectGoodsByGoodsCode")
     @ResponseBody
     public Goods selectGoodsByGoodsCode(Goods goods){
-
         Goods goodsSingle=
             goodsServiceImp.selectGoodsByGoodsCode(goods.getGoods_code());
-
         return goodsSingle;
     }
 
@@ -80,9 +78,8 @@ public class GoodsController {
         List<Goods> goodsList =
                 goodsServiceImp.selectHotGoods(goods.getPrepare2());
         return goodsList;
+
+
     }
-
-
-
 
 }
